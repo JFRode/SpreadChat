@@ -18,6 +18,7 @@ public class FormChat extends javax.swing.JFrame {
         connection = new Connection(host, hostGroup, nickName);
         this.hostGroup = hostGroup;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,6 +36,7 @@ public class FormChat extends javax.swing.JFrame {
         buttonSend = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SpreadChat - JFRode");
 
         panelUsers.setBorder(javax.swing.BorderFactory.createTitledBorder("Users"));
 

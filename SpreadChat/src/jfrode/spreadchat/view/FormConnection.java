@@ -13,6 +13,7 @@ public class FormConnection extends javax.swing.JFrame {
 
     public FormConnection() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -29,6 +30,7 @@ public class FormConnection extends javax.swing.JFrame {
         buttonConnect = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SpreadChat - JFRode");
 
         panelMain.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -105,9 +107,8 @@ public class FormConnection extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnectActionPerformed
-        System.out.println("cliquei");
+        this.setVisible(false);
         new FormChat(textFieldAddress.getText(), textFieldGroup.getText(), textFieldNickName.getText()).setVisible(true);
-        System.out.println("descliquei");
     }//GEN-LAST:event_buttonConnectActionPerformed
 
     public static void main(String args[]) {
