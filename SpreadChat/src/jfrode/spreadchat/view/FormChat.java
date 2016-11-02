@@ -142,9 +142,10 @@ public class FormChat extends javax.swing.JFrame {
     public void listenMessages() {
         try {
             SpreadMessage message = connection.messageReceive();
+            String msg = new String(message.getData());
             if (message.isRegular()) {
-                textAreaMessages.setText(textAreaMessages.getText() + "\n" + 
-                        message.getSender().toString() + ": " + message.getData().toString());
+                textAreaMessages.setText(textAreaMessages.getText() + "\n"
+                        + message.getSender() + ": " + msg);
             }
         } catch (Exception ex) {
             Logger.getLogger(FormChat.class.getName()).log(Level.SEVERE, null, ex);
