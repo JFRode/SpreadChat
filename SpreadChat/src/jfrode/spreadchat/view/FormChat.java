@@ -45,7 +45,7 @@ public class FormChat extends javax.swing.JFrame {
             panelUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelUsersLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPaneUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addComponent(scrollPaneUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelUsersLayout.setVerticalGroup(
@@ -58,6 +58,7 @@ public class FormChat extends javax.swing.JFrame {
 
         panelMessages.setBorder(javax.swing.BorderFactory.createTitledBorder("Messages"));
 
+        textAreaMessages.setEditable(false);
         textAreaMessages.setColumns(20);
         textAreaMessages.setRows(5);
         scrollPaneMessages.setViewportView(textAreaMessages);
