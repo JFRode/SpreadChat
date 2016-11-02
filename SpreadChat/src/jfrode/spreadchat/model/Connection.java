@@ -1,14 +1,14 @@
 package jfrode.spreadchat.model;
 
-import java.io.InterruptedIOException;
 import java.net.InetAddress;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import spread.BasicMessageListener;
 import spread.SpreadConnection;
 import spread.SpreadException;
 import spread.SpreadGroup;
 import spread.SpreadMessage;
-
 
 public class Connection {
     private SpreadConnection connection;
@@ -18,7 +18,6 @@ public class Connection {
         connection = new SpreadConnection();
         try {
             connection.connect(InetAddress.getByName(host), 0, nickName, false, false);
-            //connection.connect(InetAddress.getByName(host), 0, nickName, false, false);
             
             this.group = new SpreadGroup();
             group.join(connection, hostGroup);
@@ -38,5 +37,9 @@ public class Connection {
     
     public SpreadMessage messageReceive() throws Exception {
         return connection.receive();
+    }
+    
+    public void addListner(BasicMessageListener listener) {
+        this.connection.add(listener);
     }
 }

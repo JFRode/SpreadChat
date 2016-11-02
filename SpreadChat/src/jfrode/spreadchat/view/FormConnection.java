@@ -5,10 +5,6 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-/**
- *
- * @author João Felipe Gonçalves <joaofelipe.rode@gmail.com>
- */
 public class FormConnection extends javax.swing.JFrame {
 
     public FormConnection() {

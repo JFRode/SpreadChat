@@ -1,14 +1,9 @@
 package jfrode.spreadchat.view;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jfrode.spreadchat.model.Connection;
+import jfrode.spreadchat.model.MessageListener;
 import spread.SpreadMessage;
 
-/**
- *
- * @author João Felipe Gonçalves <joaofelipe.rode@gmail.com>
- */
 public class FormChat extends javax.swing.JFrame {
 
     private String hostGroup;
@@ -19,6 +14,9 @@ public class FormChat extends javax.swing.JFrame {
         this.hostGroup = hostGroup;
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("SpreadChat - Host: " + host + " Group: " + hostGroup);
+        textAreaMessages.setEditable(false);
+        connection.addListner(new MessageListener(connection, textAreaMessages, listUsers));
     }
 
     @SuppressWarnings("unchecked")
@@ -36,7 +34,6 @@ public class FormChat extends javax.swing.JFrame {
         buttonSend = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SpreadChat - JFRode");
 
         panelUsers.setBorder(javax.swing.BorderFactory.createTitledBorder("Users"));
 
@@ -138,30 +135,15 @@ public class FormChat extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public void listenMessages() {
-        try {
-            SpreadMessage message = connection.messageReceive();
-            String msg = new String(message.getData());
-            if (message.isRegular()) {
-                textAreaMessages.setText(textAreaMessages.getText() + "\n"
-                        + message.getSender() + ": " + msg);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(FormChat.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
+ 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         SpreadMessage message = new spread.SpreadMessage();
-        
         byte[] data = textFieldMessageSend.getText().getBytes();
         message.setData(data);
         message.addGroup(this.hostGroup);
         message.setReliable();
         connection.messageMulticast(message);
-        
-        listenMessages();
+        textFieldMessageSend.setText("");
     }//GEN-LAST:event_buttonSendActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
